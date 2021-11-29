@@ -23,8 +23,8 @@
     <![endif]-->
 
     <script>
-        const playerSelection = prompt("What do you choose?").toLowerCase();
-        const computerSelection = computerPlay();
+        // const playerSelection = prompt("What do you choose?").toLowerCase();
+        // const computerSelection = computerPlay();
 
         function computerPlay() {
             num = Math.floor(Math.random() * 3);
@@ -65,11 +65,24 @@
         //             alert("Must be rock, paper or scissors")
         //     }
         // };
+            
+        function game(numRounds) {
+            for (let i = 0; i < numRounds; i++) {
+                let playerSelection = prompt("What do you choose?").toLowerCase();
+                let computerSelection = computerPlay();
+                console.log((playRound(playerSelection, computerSelection)));
+            }
+        }
 
-            console.log(playerSelection);
-            console.log(computerSelection);
+        //Game Function
 
-            console.log(playRound(playerSelection, computerSelection));
+            // console.log(playerSelection);
+            // console.log(computerSelection);
+
+            // console.log(playRound(playerSelection, computerSelection));
+
+            game(5);
+
     </script>
 </body>
 
