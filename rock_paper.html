@@ -4,17 +4,16 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Rock Paper Scissors</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
@@ -23,67 +22,61 @@
     <![endif]-->
 
     <script>
-        // const playerSelection = prompt("What do you choose?").toLowerCase();
-        // const computerSelection = computerPlay();
 
-        function computerPlay() {
-            num = Math.floor(Math.random() * 3);
-            if (num === 0) {
-                return "rock";
-            } else if (num == 1) {
-                return "paper";
-            } else {
-                return "scissors";
-            }
+      let rounds = 0;
+      let playerScore = 0;
+      let computerScore = 0;
+      let tie = 0;
+
+      function computerPlay() {
+        num = Math.floor(Math.random() * 3);
+        if (num === 0) {
+          return "rock";
+        } else if (num == 1) {
+          return "paper";
+        } else {
+          return "scissors";
         }
+      }
 
-        function playRound(playerSelection, computerSelection) {
-            if (
-                (playerSelection === "paper" && computerSelection === "rock") ||
-                (playerSelection === "rock" && computerSelection === "scissors") ||
-                (playerSelection === "scissors" && computerSelection === "paper")
-            ) {
-                return "Player Wins";
-            } else if (
-                (computerSelection === "paper" && playerSelection === "rock") ||
-                (computerSelection === "rock" && playerSelection === "scissors") ||
-                (computerSelection === "scissors" && playerSelection === "paper")
-            ) {
-                return "Computer Wins";
-            } else {
-                return "Tie"
-            }
+      function playRound() {
+        let playerSelection = prompt("What do you choose?").toLowerCase();
+        let computerSelection = computerPlay();
+        if (
+          (playerSelection === "paper" && computerSelection === "rock") ||
+          (playerSelection === "rock" && computerSelection === "scissors") ||
+          (playerSelection === "scissors" && computerSelection === "paper")
+        ) {
+          rounds++;
+          playerScore++;
+          return "Player Wins";
+        } else if (
+          (computerSelection === "paper" && playerSelection === "rock") ||
+          (computerSelection === "rock" && playerSelection === "scissors") ||
+          (computerSelection === "scissors" && playerSelection === "paper")
+        ) {
+          rounds++;
+          computerScore++;
+          return "Computer Wins";
+        } else {
+          rounds++;
+          tie++;
+          return "Tie";
         }
+      }
 
-        //need funciton to get player selection and check if rock, paper or scissors
-
-        // function getplayerSelection(playerSelection) {
-        //     switch (true) {
-        //         case playerSelection == "rock" || "paper" || "scissors":
-        //             return playerSelection;
-        //     default:
-        //             alert("Must be rock, paper or scissors")
-        //     }
-        // };
-            
-        function game(numRounds) {
-            for (let i = 0; i < numRounds; i++) {
-                let playerSelection = prompt("What do you choose?").toLowerCase();
-                let computerSelection = computerPlay();
-                console.log((playRound(playerSelection, computerSelection)));
-            }
+      function game(numRounds) {
+        for (i = 0; i < numRounds; i++) {
+          playRound();
+          console.log("Round=" + rounds);
+          console.log("Player Score=" + playerScore);
+          console.log("Computer Score=" + computerScore);
+          console.log("Tie=" + tie);
         }
+      }
 
-        //Game Function
-
-            // console.log(playerSelection);
-            // console.log(computerSelection);
-
-            // console.log(playRound(playerSelection, computerSelection));
-
-            game(5);
-
+      game(5);
+      
     </script>
-</body>
-
+  </body>
 </html>
